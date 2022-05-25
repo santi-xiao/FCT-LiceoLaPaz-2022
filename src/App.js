@@ -1,9 +1,30 @@
 import './App.css';
-import HeaderNav from './Components/HeaderNav';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './pages/Home';
+import Products from './pages/Products';
+import Layout from './pages/Layout';
+import Survivors from './Components/Survivors';
+import Killers from './Components/Killers'
+import Cart from './Components/Cart'
+import Checkout from './Components/Checkout'
 
 function App() {
   return (
-    <HeaderNav/>
+    <>
+     <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Layout/>}>
+          <Route index element={<Home/>}/>
+          <Route path='products' element={<Products/>}>
+            <Route path='survivors' element={<Survivors/>}/>
+            <Route path='killers' element={<Killers/>}/>
+          </Route>
+          <Route path='cart' element={<Cart/>} />
+          <Route path='checkout' element={<Checkout/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+    </>
   );
 }
 
