@@ -17,7 +17,6 @@ html,body{
   font-style: normal;
   font-variant: normal;
   text-transform: none;
-
 }
 .subtitle{
   text-align: center;
@@ -45,7 +44,7 @@ html,body{
 .main{
   height: 100%;
   grid-area: 1 / 2 / 2 / 8;
-  padding: 1% 4%;
+  padding: 1% 4% 0% 4%;
   background-color: #E6EBE0;
 }
 .nav{
@@ -83,4 +82,116 @@ html,body{
   margin: auto;
   padding: 7%;
 }
+.nav_footer{
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+.nav_footer p{
+  opacity: 0.7;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+}
+
+/* main  */
+.cardsContainer{
+  width: 100%;
+}
+.cardsWrap{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.productCardContainer{
+  margin: 10px;
+  width: 300px;
+  height: 490px;
+  text-align: center;
+  border-radius: 3px;
+  transition: 200ms ease-in-out;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+.productCardContainer:hover{
+  margin-bottom: -10px;
+  box-shadow: 0 0 7px rgba(0,0,0,0.7);
+
+}
+.productCardContainer h1{
+  color: #fff;
+	padding: 30px;
+	margin-top: 300px;
+	text-align: center;
+	font-weight: 100;
+	font-size: 25px;
+	background: rgba(0,0,0,0.8);
+	box-shadow: 0 0 30px rgba(0,0,0,0.8);
+}
+
+.cardText{
+  padding: 15px;
+}
+
+/* details view  */
+.detailsContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.imageContainer{
+  background-color: #ED6A5A;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  /* padding: 2rem; */
+}
+.imageContainer img{
+  height: 480px;
+  width: 250px;
+}
+.infoContainer{
+  background-color: #F4F1BB;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  padding: 2rem;
+  margin-left: 5rem;
+}
+
+.infoContainer p {
+  text-align: justify;
+  font-size: 18px;
+  letter-spacing: 1px;
+  word-spacing: 3.6px;
+  color: #000000;
+  font-weight: 400;
+  text-overflow: clip;
+  max-width: 80%;
+  margin: auto;
+  margin-bottom: 20px !important;
+}
+.infoContainer p span{
+  opacity: 0.7;
+}
+.btn{
+  border:1px solid #CCC;
+  border-radius: 3px;
+  background:#9BC1BC;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+  cursor:pointer;
+  vertical-align:middle;
+  max-height: 200px;
+  padding: 12px 10px;
+  text-align: center;
+  margin: auto;
+}
+.btn:hover{
+  background-color: #5CA4A9;
+}
+/* .btn p {
+  text-align: center;
+  font-size: 16px;
+  margin: auto !important;
+} */
 

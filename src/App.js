@@ -7,6 +7,7 @@ import Survivors from './Components/Survivors';
 import Killers from './Components/Killers'
 import Cart from './Components/Cart'
 import Checkout from './Components/Checkout'
+import ProductDetail from './pages/ProductDetails';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path='products' element={<Products/>}>
             <Route path='survivors' element={<Survivors/>}/>
             <Route path='killers' element={<Killers/>}/>
+            <Route path=':id' element={<ProductDetail/>}/>
           </Route>
           <Route path='cart' element={<Cart/>} />
           <Route path='checkout' element={<Checkout/>}/>
