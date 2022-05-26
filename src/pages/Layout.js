@@ -5,10 +5,14 @@ import HeaderNav from '../Components/HeaderNav';
 
 const Layout = () =>{
     return(
-        <>
+        <div className='layout'>
+        <div className='nav'>
             <HeaderNav/>
+        </div>
+        <div className='main'>
             <Outlet/>
-        </>
+        </div>
+        </div>
     )
 }
 
