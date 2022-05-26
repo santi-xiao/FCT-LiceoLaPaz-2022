@@ -1,7 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const HeaderNav = () => {
+
+    const getYear = () => {
+        let today = new Date();
+        let year = today.getFullYear();
+        return year;
+    }
+
     return (
         <div className='nav_container'>
             <div className='nav_title'>
@@ -14,6 +22,10 @@ const HeaderNav = () => {
             <div className='nav_links'>
                 <Link to="/products/survivors">Survivors</Link>
                 <Link to="/products/killers">Killers</Link>
+                <Link to="cart"><ShoppingCartIcon/></Link>
+            </div>
+            <div className='nav_footer'>
+                <p className='subtitle'>© Copyright {getYear} | Santiago Xiao</p>
             </div>
         </div>
     )
