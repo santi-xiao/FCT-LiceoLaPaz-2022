@@ -88,6 +88,9 @@ html,body{
   text-align: center;
   width: 100%;
 }
+.nav_footer a {
+  color: #000000;
+}
 .nav_footer p{
   opacity: 0.7;
   letter-spacing: 1px;
