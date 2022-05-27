@@ -21,8 +21,8 @@ const HeaderNav = () => {
                 <div className='subtitle'>Unofficial Dead By Daylight Store. Made by a fan for the fans</div>
             </div>
             <div className='nav_links'>
-                <Link to="/products/survivors">Survivors</Link>
-                <Link to="/products/killers">Killers</Link>
+                <Link to="survivors">Survivors</Link>
+                <Link to="killers">Killers</Link>
                 <Link to="cart"><ShoppingCartIcon sx={{fontSize: 30}} /></Link>
             </div>
             <div className='nav_footer'>

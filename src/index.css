@@ -144,11 +144,14 @@ html,body{
   justify-content: center;
   align-items: center;
 }
+.otherContainer{
+  flex: 1;
+  flex-direction: column;
+}
 .imageContainer{
   background-color: #ED6A5A;
   border-radius: 3px;
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  /* padding: 2rem; */
 }
 .imageContainer img{
   height: 480px;
@@ -160,6 +163,7 @@ html,body{
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
   padding: 2rem;
   margin-left: 5rem;
+  margin-bottom: 2rem;
 }
 
 .infoContainer p {
@@ -185,6 +189,7 @@ html,body{
   cursor:pointer;
   vertical-align:middle;
   max-height: 200px;
+  max-width: 300px;
   padding: 12px 10px;
   text-align: center;
   margin: auto;
