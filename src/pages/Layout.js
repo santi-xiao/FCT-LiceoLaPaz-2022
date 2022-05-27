@@ -1,25 +1,26 @@
-import React, { createContext, useState } from 'react'
+import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom';
 import HeaderNav from '../Components/HeaderNav';
 
 
-const CartContext = createContext();
 
 
 const Layout = () =>{
-    const [cart, setCart] = useState({});
+    const [cart, setCart] = useState({
+        products: [
+            
+        ]
+    });
 
     return(
-        <CartContext.Provider value={cart}>
         <div className='layout'>
         <div className='nav'>
             <HeaderNav/>
         </div>
         <div className='main'>
-            <Outlet/>
+            <Outlet context={[cart, setCart]} />
         </div>
         </div>
-        </CartContext.Provider>
     )
 }
 

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useOutletContext } from 'react-router-dom';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 const ProductDetail = () =>{
 
+    const [cart, setCart] = useOutletContext()
     const {id} = useParams();
 
     const [product, setProduct] = useState(null);
@@ -14,6 +15,34 @@ const ProductDetail = () =>{
         .then(data => setProduct(data));
     }, [id])
 
+    useEffect(()=>{
+        console.log(cart);
+    }, [cart])
+
+
+    const addProductToCart = (p) => {
+        let cartCopy = cart.products;
+        let product = {id: p.id, nombre: p.nombre, precio: p.precio, cantidad: 1,impuestos: 21,  descuento: p.descuento}
+
+        if(cartCopy.length === 0){
+            cartCopy = {products: [product]}
+            setCart(cartCopy);
+            return;
+        }
+
+        if(cartCopy.find(prod => prod.id === p.id)){
+            console.log("ya está en el carrito");
+            return;
+        }
+
+        if(cartCopy.length > 0){
+            cartCopy = {products: [product, ...cart.products]};
+            setCart(cartCopy);
+            return;
+        }
+
+    }
+
     return (
         <>
             {!product ? <h1>Loading</h1> : 
@@ -23,15 +52,17 @@ const ProductDetail = () =>{
                         <div className='imageContainer'>
                             <img src={product.imagenCuerpo} alt={product.nombre} />
                         </div>
-                        <div className='infoContainer'>
-                            <p><span>Name: </span>{product.nombre}</p>
-                            <p><span>Category: </span>{product.categoria.nombre}</p>
-                            <p><span>Description: </span>{product.descripcion}</p>
-                            <p><span>Price: </span>{product.precio} €</p>
-                        </div>
-                            <div className='btn'>
-                                <AddShoppingCartIcon />
+                        <div className='otherContainer'>
+                            <div className='infoContainer'>
+                                <p><span>Name: </span>{product.nombre}</p>
+                                <p><span>Category: </span>{product.categoria.nombre}</p>
+                                <p><span>Description: </span>{product.descripcion}</p>
+                                <p><span>Price: </span>{product.precio} €</p>
                             </div>
+                                <div className='btn' onClick={() =>addProductToCart(product)}>
+                                    <AddShoppingCartIcon />
+                                </div>
+                        </div>
                     </div>
                 </>        
              }
