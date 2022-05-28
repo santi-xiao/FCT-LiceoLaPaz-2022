@@ -15,14 +15,8 @@ const ProductDetail = () =>{
         .then(data => setProduct(data));
     }, [id])
 
-    useEffect(()=>{
-        console.log(cart);
-    }, [cart])
-
-
     const addProductToCart = (p) => {
         let cartCopy = cart.products;
-        let product = {id: p.id, nombre: p.nombre, precio: p.precio, cantidad: 1,impuestos: 21,  descuento: p.descuento}
 
         if(cartCopy.length === 0){
             cartCopy = {products: [product]}
@@ -40,7 +34,6 @@ const ProductDetail = () =>{
             setCart(cartCopy);
             return;
         }
-
     }
 
     return (
