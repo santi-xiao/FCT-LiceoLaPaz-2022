@@ -8,12 +8,17 @@ const ProductDetail = () =>{
     const {id} = useParams();
 
     const [product, setProduct] = useState(null);
+    const [onCart, setOnCart] = useState();
  
     useEffect(() =>{
         fetch(`http://localhost:8080/api/productos/producto/${id}`)
         .then(response => response.json())
         .then(data => setProduct(data));
     }, [id])
+    
+    useEffect(()=>{
+        cart.products.includes(product) ? setOnCart(true) : setOnCart(false);
+    }, [cart])
 
     const addProductToCart = (p) => {
         let cartCopy = cart.products;
@@ -52,9 +57,16 @@ const ProductDetail = () =>{
                                 <p><span>Description: </span>{product.descripcion}</p>
                                 <p><span>Price: </span>{product.precio} €</p>
                             </div>
+                            {!onCart ?
                                 <div className='btn' onClick={() =>addProductToCart(product)}>
                                     <AddShoppingCartIcon />
+                                </div> 
+                                :
+                                <div className='btn disabled'>
+                                    <p>Already on cart</p>
                                 </div>
+                             }
+                                
                         </div>
                     </div>
                 </>        

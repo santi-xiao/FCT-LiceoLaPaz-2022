@@ -19,9 +19,8 @@ const Cart = () => {
         let finalPrice = 0;
             cart.products.map(p => {
                finalPrice += p.precio;
-               setPrice(finalPrice)
             })
-        return;
+         return setPrice(finalPrice);
     }, [cart]);
 
     return(
@@ -29,7 +28,7 @@ const Cart = () => {
             <h1>Cart</h1>
             <div className='cartMainContainer'>
                 <div className='cartProductContainer'>
-                    { !cart.products > 0 ? <p className='subtitle'>There are no products in the cart</p>: 
+                    { !cart.products.length > 0 ? <p className='subtitle'>There are no products in the cart</p>: 
                         cart.products.map(product => {
                             return (
                                <dl className='dlProductContainer' key={product.id}>
@@ -49,9 +48,14 @@ const Cart = () => {
                 <div className='cartPriceCountContainer'>
                     <p className='title border-bottom'>Price</p>
                     <p className='cartPrice'>{price}€</p>
+                    {!cart.products.length > 0 ? 
+                    <div className='btn disabled'>
+                        <p>Add products to cart</p>
+                    </div>
+                     : 
                     <div className='btn'>
                         <p>To Checkout</p>
-                    </div>
+                    </div>}
                 </div>
             </div>
         </>
