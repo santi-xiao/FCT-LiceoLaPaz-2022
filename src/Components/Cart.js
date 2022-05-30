@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react'
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext, Link, useNavigate } from 'react-router-dom';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const Cart = () => {
 
     const [cart, setCart] = useOutletContext()
+
+    const navigation = useNavigate();
 
     const removeFromCart = (id) =>{
         let cartCopy = cart.products;
@@ -22,6 +24,10 @@ const Cart = () => {
             })
          return setPrice(finalPrice);
     }, [cart]);
+
+    const toCheckout = () => {
+        navigation("/checkout");
+    }
 
     return(
         <>
@@ -53,9 +59,10 @@ const Cart = () => {
                         <p>Add products to cart</p>
                     </div>
                      : 
-                    <div className='btn'>
-                        <p>To Checkout</p>
-                    </div>}
+                        <div className='btn' onClick={toCheckout}>
+                            <p>To Checkout</p>
+                        </div>
+                    }
                 </div>
             </div>
         </>

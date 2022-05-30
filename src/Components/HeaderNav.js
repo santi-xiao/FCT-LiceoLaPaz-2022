@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const HeaderNav = () => {
 
@@ -26,7 +25,6 @@ const HeaderNav = () => {
                 <Link to="cart"><ShoppingCartIcon sx={{fontSize: 30}} /></Link>
             </div>
             <div className='nav_footer'>
-                <Link to="/"><AccountCircleIcon sx={{fontSize: 35}}/></Link>
                 <p className='subtitle'>© Copyright {getYear} | Santiago Xiao</p>
             </div>
         </div>

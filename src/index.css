@@ -225,6 +225,9 @@ html,body{
 .btn:hover{
   background-color: #5CA4A9;
 }
+.btn p{
+  text-decoration: none !important;
+}
 
 /* Cart  */
 .cartMainContainer{
