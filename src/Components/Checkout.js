@@ -15,6 +15,68 @@ const Checkout = () => {
         return setPrice(totalamount);
     },[])
 
+    const calculateAmount = () => {
+        let totalamount = price;
+        cart.products.map(p =>{
+            totalamount += p.precio;
+        })
+        return totalamount;
+    }
+
+    // paypal 
+    const [success, setSuccess] = useState(false);
+    const [ErrorMessage, setErrorMessage] = useState("");
+    const [orderID, setOrderID] = useState(false);
+
+    useEffect(() => {
+        if (success) {
+          console.log("Payment successful!!");
+        }
+      },
+      [success]
+    );
+   
+   console.log(1, orderID);
+   console.log(2, success);
+   console.log(3, ErrorMessage);
+
+    // creates a paypal order
+ const createOrder = (data, actions) => {
+    return actions.order
+      .create({
+        purchase_units: [
+          {
+            description: "StoreByDaylightPayment",
+            amount: {
+              currency_code: "USD",
+              value: 40,
+            },
+          },
+        ],
+        // not needed if a shipping address is actually needed
+        application_context: {
+          shipping_preference: "NO_SHIPPING",
+        },
+      })
+      .then((orderID) => {
+        setOrderID(orderID);
+        return orderID;
+      });
+  };
+  
+  // check Approval
+  const onApprove = (data, actions) => {
+    return actions.order.capture().then(function (details) {
+      const { payer } = details;
+      setSuccess(true);
+    });
+  };
+  //capture likely error
+  const onError = (data, actions) => {
+    setErrorMessage("An Error occured with your payment ");
+  };
+
+
     return(
         <>
             <h1>Checkout</h1>
@@ -33,11 +95,12 @@ const Checkout = () => {
                         })
                     }
             <PayPalScriptProvider options={{"client-id": "AeE-v1TjkR_wTmIj72JVIPQ5vmw64tZlFcgYt_8IQ1JYOW2nr6EWy_9Px9qotsIHjh5HIuvPrW9E3F4X"}}>
-                <PayPalButtons style={{layout: "horizontal"}}/>
+                <PayPalButtons style={{layout: "horizontal"}} createOrder={createOrder} onApprove={onApprove} />
             </PayPalScriptProvider>
 
         </>
     )
 }
+
 
 export default Checkout;
