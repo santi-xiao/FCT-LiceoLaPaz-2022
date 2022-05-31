@@ -59,7 +59,49 @@ html,body{
   opacity: 0.5;
   background: #CCC;
 }
+.btn{
+  border:1px solid #CCC;
+  border-radius: 3px;
+  background:#9BC1BC;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+  cursor:pointer;
+  vertical-align:middle;
+  max-height: 200px;
+  max-width: 300px;
+  padding: 12px 10px;
+  text-align: center;
+  margin: auto;
+}
+.btn:hover{
+  background-color: #5CA4A9;
+}
+.btn p{
+  text-decoration: none !important;
+}
 
+.input-container {
+  position: relative;
+}
+.container__input{
+  width: 100%;
+  height: 2rem;
+}
+.container__input:not(:placeholder-shown) + .container__label {
+  background: #fff;
+  transform: translate(0, -50%);
+  opacity: 1;
+}
+
+.container__label {
+  /* Position the label */
+  left: 8px;
+  position: absolute;
+  top: 0;
+
+  /* Hide it by default */
+  opacity: 0;
+  transition: all 200ms;
+}
 /* containers */
 .layout{
   height: 100vh;
@@ -209,25 +251,9 @@ html,body{
 .infoContainer p span{
   opacity: 0.7;
 }
-.btn{
-  border:1px solid #CCC;
-  border-radius: 3px;
-  background:#9BC1BC;
-  box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
-  cursor:pointer;
-  vertical-align:middle;
-  max-height: 200px;
-  max-width: 300px;
-  padding: 12px 10px;
-  text-align: center;
-  margin: auto;
-}
-.btn:hover{
-  background-color: #5CA4A9;
-}
-.btn p{
-  text-decoration: none !important;
-}
+
+
+
 
 /* Cart  */
 .cartMainContainer{
@@ -271,3 +297,43 @@ html,body{
   /* margin: auto; */
 }
 
+
+/* checkout  */
+#form {
+  width: 300px;
+  margin: 20vh auto 0 auto;
+  padding: 20px;
+  background-color: whitesmoke;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.input-control {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-control input {
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  display: block;
+  font-size: 12px;
+  padding: 10px;
+  width: 100%;
+}
+
+.input-control input:focus {
+  outline: 0;
+}
+.input-control.success input {
+  border-color: #09c372;
+}
+
+.input-control.error input {
+  border-color: #ff3860;
+}
+
+.input-control .error {
+  color: #ff3860;
+  font-size: 9px;
+  height: 13px;
+}
