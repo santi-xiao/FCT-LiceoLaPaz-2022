@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useOutletContext, useNavigate } from "react-router-dom";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
+import ButtonWrapper from "./ButtonWrapper";
+import {
+  PayPalButtons,
+  PayPalScriptProvider,
+  usePayPalScriptReducer,
+} from "@paypal/react-paypal-js";
 
 const Cart = () => {
   const [cart, setCart] = useOutletContext();
@@ -18,52 +23,15 @@ const Cart = () => {
   const [price, setPrice] = useState(0);
 
   useEffect(() => {
-    let finalPrice = 0;
-    cart.products.map((p) => {
-      finalPrice += p.precio;
-    });
-    return setPrice(finalPrice);
-  }, [cart]);
-
-  // PAYPAL
-  const [success, setSuccess] = useState(false);
-  const [orderID, setOrderID] = useState(false);
-
-  useEffect(() => {
-    if (success) {
-      console.log("Payment successful!!");
-    }
-  }, [success]);
-
-  // creates a paypal order
-  const createOrder = (data, actions) => {
-    return actions.order
-      .create({
-        purchase_units: [
-          {
-            description: "StoreByDaylightPayment",
-            amount: {
-              currency_code: "USD",
-              value: price,
-            },
-          },
-        ],
-        application_context: {
-          shipping_preference: "NO_SHIPPING",
-        },
-      })
-      .then((orderID) => {
-        setOrderID(orderID);
-        return orderID;
+    const calculateOrderPrice = () => {
+      let finalPrice = 0;
+      cart.products.map((p) => {
+        finalPrice += p.precio;
       });
-  };
-
-  // check Approval
-  const onApprove = (data, actions) => {
-    return actions.order.capture().then(function () {
-      setSuccess(true);
-    });
-  };
+      return setPrice(finalPrice);
+    };
+    calculateOrderPrice();
+  }, [cart]);
 
   return (
     <>
@@ -110,13 +78,11 @@ const Cart = () => {
               options={{
                 "client-id":
                   "AeE-v1TjkR_wTmIj72JVIPQ5vmw64tZlFcgYt_8IQ1JYOW2nr6EWy_9Px9qotsIHjh5HIuvPrW9E3F4X",
+                components: "buttons",
+                currency: "EUR",
               }}
             >
-              <PayPalButtons
-                style={{ layout: "horizontal" }}
-                createOrder={createOrder}
-                onApprove={onApprove}
-              />
+              <ButtonWrapper amount={price} showSpinner={false} />
             </PayPalScriptProvider>
           )}
         </div>
