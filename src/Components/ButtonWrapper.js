@@ -1,9 +1,6 @@
 import { useEffect } from "react";
-import {
-  PayPalScriptProvider,
-  PayPalButtons,
-  usePayPalScriptReducer,
-} from "@paypal/react-paypal-js";
+import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import { useNavigate } from "react-router-dom";
 
 // This values are the props in the UI
 const amount = "2";
@@ -12,6 +9,7 @@ const style = { layout: "vertical" };
 
 const ButtonWrapper = ({ amount, showSpinner }) => {
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+  const navigation = useNavigate();
 
   useEffect(() => {
     dispatch({
@@ -49,7 +47,7 @@ const ButtonWrapper = ({ amount, showSpinner }) => {
         }}
         onApprove={function (data, actions) {
           return actions.order.capture().then(function () {
-            // Your code here after capture the order
+            navigation("/keys");
           });
         }}
       />

@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useOutletContext, useNavigate } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import ButtonWrapper from "./ButtonWrapper";
-import {
-  PayPalButtons,
-  PayPalScriptProvider,
-  usePayPalScriptReducer,
-} from "@paypal/react-paypal-js";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const Cart = () => {
   const [cart, setCart] = useOutletContext();
-
-  const navigation = useNavigate();
 
   const removeFromCart = (id) => {
     let cartCopy = cart.products;
