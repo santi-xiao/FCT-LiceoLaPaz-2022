@@ -20,6 +20,7 @@ const ProductDetail = () => {
     if (cartCopy.length === 0) {
       cartCopy = { products: [product] };
       setCart(cartCopy);
+      localStorage["cart"] = JSON.stringify(cartCopy);
       return;
     }
 
@@ -31,6 +32,7 @@ const ProductDetail = () => {
     if (cartCopy.length > 0) {
       cartCopy = { products: [product, ...cart.products] };
       setCart(cartCopy);
+      localStorage["cart"] = JSON.stringify(cartCopy);
       return;
     }
   };

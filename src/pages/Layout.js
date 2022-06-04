@@ -3,9 +3,18 @@ import { Outlet } from "react-router-dom";
 import HeaderNav from "../Components/HeaderNav";
 
 const Layout = () => {
-  const [cart, setCart] = useState({
+  const cacheCart = localStorage["cart"];
+
+  const products = {
     products: [],
-  });
+  };
+
+  const cacheCartExist = () => {
+    if (cacheCart) return JSON.parse(cacheCart);
+    else return products;
+  };
+
+  const [cart, setCart] = useState(() => cacheCartExist());
 
   return (
     <div className="layout">

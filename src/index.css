@@ -38,6 +38,9 @@ html,body{
 .no-margin{
   margin: 0 !important;
 }
+.center-margin-2rem{
+  margin: 2rem auto !important;
+}
 .avatar{
   border-radius: 50%;
   height: 32px;
@@ -336,4 +339,11 @@ html,body{
   color: #ff3860;
   font-size: 9px;
   height: 13px;
+}
+
+/* KeyGenerator */
+.key-value{
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-decoration: underline;
 }

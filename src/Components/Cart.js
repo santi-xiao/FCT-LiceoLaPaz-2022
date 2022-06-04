@@ -12,6 +12,7 @@ const Cart = () => {
     let filteredCart = cartCopy.filter((p) => p.id !== id);
     cartCopy = { products: filteredCart };
     setCart(cartCopy);
+    localStorage["cart"] = JSON.stringify(cartCopy);
   };
 
   const [price, setPrice] = useState(0);

@@ -19,7 +19,7 @@ const ButtonWrapper = ({ amount, showSpinner }) => {
         amount: amount,
       },
     });
-  }, [currency, showSpinner]);
+  }, [amount, showSpinner]);
 
   return (
     <>
