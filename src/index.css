@@ -31,9 +31,17 @@ html,body{
   text-transform: none;
   margin-top: 2rem;
 }
+.banner{
+  z-index: 1;
+  width: 480px;
+  height: 400px;
+}
 .border-bottom{
   border-bottom: 1px solid black;
   margin: 0px 35px
+}
+.boldfont{
+  font-weight: bold;
 }
 .no-margin{
   margin: 0 !important;
@@ -96,12 +104,9 @@ html,body{
 }
 
 .container__label {
-  /* Position the label */
   left: 8px;
   position: absolute;
   top: 0;
-
-  /* Hide it by default */
   opacity: 0;
   transition: all 200ms;
 }
@@ -170,6 +175,26 @@ html,body{
   word-spacing: 2px;
 }
 
+/* home */
+.homecontainer{
+  margin: 0 auto;
+  margin-bottom: 4rem;
+  z-index: 5;
+}
+.textconatiner{
+  padding: 0 7rem;
+  text-align: center;
+}
+.videocontainer{
+  display: flex;
+  justify-content: center;
+}
+.doublediv{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 /* main  */
 .cardsContainer{
   width: 100%;
@@ -209,6 +234,7 @@ html,body{
 .cardText{
   padding: 15px;
 }
+
 
 /* details view  */
 .detailsContainer{
